@@ -10,3 +10,42 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.app-button {
+  font-family:
+    Google Sans,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  padding: 11px 23px;
+  vertical-align: baseline;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #006a0b;
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 1px 3px,
+    rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  color: #fff;
+  border: none;
+  margin: 5px 0;
+  margin-right: 10px;
+  text-decoration: none;
+}
+
+.danger {
+  background-color: #fd6794;
+}
+
+.warning {
+  background-color: #dfa300;
+}
+
+img {
+  width: 200px;
+  height: auto;
+}

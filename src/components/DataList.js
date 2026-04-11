@@ -23,9 +23,9 @@ const DataList = ({ films }) => {
       {filteredData.length === 0
         ? "Geen data beschikbaar"
         : filteredData.map((film) => (
-            <div>
+            <div key={film.id}>
               <h1>{film.original_title}</h1>
-              <Link to={`/films/${film.id}`}>
+              <Link to={`/film/${film.id}`}>
                 <img src={film.backdrop_path} alt={film.original_title} />
                 <p>{film.original_title}</p>
               </Link>

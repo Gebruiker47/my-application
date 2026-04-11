@@ -22,7 +22,15 @@ const Home = () => {
       </AppButton>
 
       {show ? "Goed" : "Niet goed"}
-
+      {isPending && (
+        <div>
+          <p>
+            Is de endpoint goed? Propeer in VS-code te volgende code in een
+            nieuwe Terminal te runnen:
+          </p>
+          <b>Npx json-server --watch data/films.json --port 8000</b>
+        </div>
+      )}
       {films && <DataList films={films} />}
     </div>
   );

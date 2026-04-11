@@ -15,11 +15,14 @@ const DataList = ({ films }) => {
   };
   return (
     <div>
-      <input
-        type="text"
-        onChange={handleFilter}
-        placeholder="Searchbar in FilmsList component"
-      />
+      <div className="searchbar-holder">
+        <input
+          className="searchbar"
+          type="text"
+          onChange={handleFilter}
+          placeholder="Searchbar in FilmsList component"
+        />
+      </div>
       {filteredData.length === 0
         ? "Geen data beschikbaar"
         : filteredData.map((film) => (

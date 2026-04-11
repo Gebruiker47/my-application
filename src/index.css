@@ -49,3 +49,98 @@ img {
   width: 200px;
   height: auto;
 }
+.header {
+  background-color: #8bc34ab0;
+  padding: 5px;
+  color: #333;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  position: sticky;
+  top: 0;
+  text-align: center;
+}
+
+/* Styling for alerts */
+
+.success {
+  margin: 0 auto;
+  border: 2px solid #009d37;
+  background-color: #2ca701;
+  color: #fff;
+  width: 50%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.warning {
+  margin: 0 auto;
+  border: 2px solid #ff004c;
+  background-color: #fd6794;
+  color: #fff;
+  width: 50%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.danger {
+  margin: 0 auto;
+  border: 2px solid #b98800;
+  background-color: #dfa300;
+  color: #fff;
+  width: 50%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Styling for inputs */
+
+input[type="text"],
+input[type="search"],
+select,
+option {
+  border-radius: 5px;
+  border: 1px solid #3f51b5;
+  font-size: 12pt;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin: 0 10px 10px;
+}
+
+.searchbar {
+  border-radius: 5px;
+  border: 1px solid #3f51b5;
+  font-size: 12pt;
+  width: 98.8%;
+  /* 
+    Padding top en de bottom gelijke hoogte geven,
+    zodat de letter mooi in het midden gecentreerd blijven 
+  */
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.searchbar-holder {
+  padding: 10px;
+  background-color: #f1356d;
+  border-radius: 5px;
+  height: 62px;
+  position: sticky;
+  top: 0;
+  width: 100%;
+
+  /* 
+    Border-box gebruikern om te 
+    voorkomen dat de searchbox 
+    buiten de .searchbar-holder schiet.
+  */
+  box-sizing: border-box;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+select,
+option {
+  width: 20px;
+}
+
+/* Styling for ..... */

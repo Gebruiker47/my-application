@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import useFetch from "../customHooks/useFetch";
 import AppButton from "../custom-components/AppButton";
-
+import Header from "../custom-components/Header";
 const DataDetail = () => {
   const { id } = useParams();
   const { data: films } = useFetch(`http://localhost:8000/films/${id}`);
@@ -9,7 +9,9 @@ const DataDetail = () => {
     <div>
       {films && (
         <div>
-          <h1>{films.original_title}</h1>
+          <Header>
+            <h1>{films.original_title}</h1>
+          </Header>
           <p>{films.overview}</p>
           <img
             src={films.backdrop_path}

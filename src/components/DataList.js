@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Alert from "../custom-components/Alert";
 const DataList = ({ films }) => {
   const [filteredData, setFilteredData] = useState(films);
 
@@ -23,17 +23,22 @@ const DataList = ({ films }) => {
           placeholder="Searchbar in FilmsList component"
         />
       </div>
-      {filteredData.length === 0
-        ? "Geen data beschikbaar"
-        : filteredData.map((film) => (
-            <div key={film.id}>
-              <h1>{film.original_title}</h1>
+
+      <main className="product-list-content">
+        {filteredData.length === 0 ? (
+          <Alert className="danger">Nothing Found</Alert>
+        ) : (
+          filteredData.map((film) => (
+            <section key={film.id} className="product-preview-content">
+              <p>{film.original_title}</p>
               <Link to={`/film/${film.id}`}>
                 <img src={film.backdrop_path} alt={film.original_title} />
                 <p>{film.original_title}</p>
               </Link>
-            </div>
-          ))}
+            </section>
+          ))
+        )}
+      </main>
     </div>
   );
 };

@@ -3,8 +3,14 @@ import { NavLink } from "react-router-dom";
 const DesktopNavigation = () => {
   return (
     <header>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/overview">Overview</NavLink>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/overview">Overview</NavLink>
+        </li>
+      </ul>
     </header>
   );
 };

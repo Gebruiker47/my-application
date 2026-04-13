@@ -70,19 +70,11 @@ img {
   width: 50%;
   border-radius: 8px;
   margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .warning {
-  margin: 0 auto;
-  border: 2px solid #ff004c;
-  background-color: #fd6794;
-  color: #fff;
-  width: 50%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.danger {
   margin: 0 auto;
   border: 2px solid #b98800;
   background-color: #dfa300;
@@ -90,6 +82,20 @@ img {
   width: 50%;
   border-radius: 8px;
   margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.danger {
+  margin: 0 auto;
+  border: 2px solid #ff004c;
+  background-color: #fd6794;
+  color: #fff;
+  width: 50%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
 }
 
 /* Styling for inputs */
@@ -143,4 +149,56 @@ option {
   width: 20px;
 }
 
-/* Styling for ..... */
+/* Styling for cardview */
+
+.product-list-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-preview-content {
+  width: 14%;
+  margin: 5px;
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 1px 3px,
+    rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 10px;
+}
+
+/* Menu styling */
+
+/* Desktop menu */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* MediaQuery styling */
+
+@media only screen and(min-width: 375px) and (max-width: 560px) {
+}
+
+@media only screen and(min-width: 561px) and (max-width: 760px) {
+}
+
+@media only screen and (min-width: 761px) and (max-width: 1024px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}

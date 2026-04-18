@@ -14,14 +14,14 @@ const Home = () => {
   return (
     <div>
       <DesktopNavigation />
-      <AppButton
+      {/* <AppButton
         customClick={handleShow}
         className={`${!show ? "danger" : ""}`}
       >
         Test Button
       </AppButton>
 
-      {show ? "Goed" : "Niet goed"}
+      {show ? "Goed" : "Niet goed"} */}
       {isPending && (
         <div>
           <p>

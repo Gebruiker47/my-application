@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import useFetch from "../customHooks/useFetch";
 import AppButton from "../custom-components/AppButton";
 import Header from "../custom-components/Header";
+import DesktopNavigation from "./DesktopNavigation";
 const DataDetail = () => {
   const { id } = useParams();
   const { data: films } = useFetch(`http://localhost:8000/films/${id}`);
@@ -9,20 +10,24 @@ const DataDetail = () => {
     <div>
       {films && (
         <div>
+          <DesktopNavigation />
           <Header>
             <h1>{films.original_title}</h1>
           </Header>
-          <p>{films.overview}</p>
-          <img
-            src={films.backdrop_path}
-            alt={films.original_title}
-            style={{ float: "left", width: "600px", height: "auto" }}
-          />
+          <div className="product-detail-content">
+            <Link to={"/"}>
+              <AppButton>Terug</AppButton>
+            </Link>
+            <h1>Overview</h1>
+            <p>{films.overview}</p>
+            <img
+              src={films.backdrop_path}
+              alt={films.original_title}
+              style={{ width: "100%", height: "auto" }}
+            />
+          </div>
         </div>
       )}
-      <Link to={"/"}>
-        <AppButton>Terug</AppButton>
-      </Link>
     </div>
   );
 };

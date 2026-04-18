@@ -110,13 +110,14 @@ option {
   padding-bottom: 10px;
   padding-top: 10px;
   margin: 0 10px 10px;
+  box-sizing: border-box;
 }
 
 .searchbar {
   border-radius: 5px;
   border: 1px solid #3f51b5;
   font-size: 12pt;
-  width: 98.8%;
+  width: 98%;
   /* 
     Padding top en de bottom gelijke hoogte geven,
     zodat de letter mooi in het midden gecentreerd blijven 
@@ -164,6 +165,26 @@ option {
     rgba(0, 0, 0, 0.12) 0px 1px 3px,
     rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding: 10px;
+  overflow: hidden;
+}
+
+.product-preview-content img {
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-detail-content {
+  width: 50%;
+  margin: 10px;
+  padding: 10px;
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 1px 3px,
+    rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  margin: 0 auto;
+}
+.product-detail-content h1 {
+  text-align: center;
 }
 
 /* Menu styling */
@@ -175,6 +196,7 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333333;
+  margin-bottom: 10px;
 }
 
 ul li {
@@ -189,16 +211,44 @@ ul li a {
   text-decoration: none;
 }
 
+header a.active {
+  background-color: #006a0b;
+}
+
 /* MediaQuery styling */
 
-@media only screen and(min-width: 375px) and (max-width: 560px) {
+@media only screen and (min-width: 0px) and (max-width: 320px) {
+  .product-preview-content {
+    width: 100%;
+  }
+  .product-detail-content {
+    width: 100%;
+  }
 }
 
-@media only screen and(min-width: 561px) and (max-width: 760px) {
+@media only screen and (min-width: 321px) and (max-width: 480px) {
+  .product-preview-content {
+    width: 40%;
+  }
+  .product-detail-content {
+    width: auto;
+  }
 }
 
-@media only screen and (min-width: 761px) and (max-width: 1024px) {
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  .product-preview-content {
+    width: 27%;
+  }
+  .product-detail-content {
+    width: auto;
+  }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  .product-preview-content {
+    width: 29%;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
 }

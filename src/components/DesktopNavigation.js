@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const DesktopNavigation = () => {
+const DesktopNavigation = ({ children }) => {
   return (
     <header>
       <ul>
@@ -10,6 +10,7 @@ const DesktopNavigation = () => {
         <li>
           <NavLink to="/overview">Overview</NavLink>
         </li>
+        <li>{children}</li>
       </ul>
     </header>
   );

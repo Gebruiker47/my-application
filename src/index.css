@@ -36,12 +36,14 @@ code {
   margin-right: 10px;
   text-decoration: none;
 }
-
-.danger {
+.data-list {
+  text-align: center;
+}
+.btn-danger {
   background-color: #fd6794;
 }
 
-.warning {
+.btn-warning {
   background-color: #dfa300;
 }
 
@@ -159,7 +161,7 @@ option {
 }
 
 .product-preview-content {
-  width: 14%;
+  width: 17%;
   margin: 5px;
   box-shadow:
     rgba(0, 0, 0, 0.12) 0px 1px 3px,
@@ -237,7 +239,7 @@ header a.active {
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .product-preview-content {
-    width: 27%;
+    width: 26.5%;
   }
   .product-detail-content {
     width: auto;

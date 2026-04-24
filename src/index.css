@@ -36,12 +36,14 @@ code {
   margin-right: 10px;
   text-decoration: none;
 }
-
-.danger {
+.data-list {
+  text-align: center;
+}
+.btn-danger {
   background-color: #fd6794;
 }
 
-.warning {
+.btn-warning {
   background-color: #dfa300;
 }
 
@@ -51,7 +53,7 @@ img {
 }
 .header {
   background-color: #8bc34ab0;
-  padding: 5px;
+  padding: 1px;
   color: #333;
   margin-bottom: 10px;
   margin-top: 10px;
@@ -136,7 +138,7 @@ option {
   width: 100%;
 
   /* 
-    Border-box gebruikern om te 
+    Border-box gebruiken om te 
     voorkomen dat de searchbox 
     buiten de .searchbar-holder schiet.
   */
@@ -159,7 +161,7 @@ option {
 }
 
 .product-preview-content {
-  width: 14%;
+  width: 17%;
   margin: 5px;
   box-shadow:
     rgba(0, 0, 0, 0.12) 0px 1px 3px,
@@ -189,29 +191,22 @@ option {
 
 /* Menu styling */
 
-/* Desktop menu */
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333333;
-  margin-bottom: 10px;
+#desktop-menu {
+  z-index: 10;
+  width: 100%;
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
 }
-
-ul li {
-  float: left;
-}
-
-ul li a {
-  display: block;
-  color: #fff;
+#desktop-menu a {
+  display: inline-block;
+  color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px;
   text-decoration: none;
 }
 
-header a.active {
+nav a.active {
   background-color: #006a0b;
 }
 
@@ -224,6 +219,13 @@ header a.active {
   .product-detail-content {
     width: 100%;
   }
+
+  #desktop-menu {
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    font-size: 18pt;
+  }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 480px) {
@@ -233,11 +235,20 @@ header a.active {
   .product-detail-content {
     width: auto;
   }
+  #desktop-menu {
+    display: inline-block;
+    position: fixed;
+    bottom: 0;
+    font-size: 18pt;
+  }
+  main {
+    margin-bottom: 80px;
+  }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
   .product-preview-content {
-    width: 27%;
+    width: 26.5%;
   }
   .product-detail-content {
     width: auto;

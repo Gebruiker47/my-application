@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Alert from "../custom-components/Alert";
 import AppButton from "../custom-components/AppButton";
+import Header from "../custom-components/Header";
 const DataList = ({ films }) => {
   const [filteredData, setFilteredData] = useState(films);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -21,6 +22,9 @@ const DataList = ({ films }) => {
   };
   return (
     <div>
+      <Header>
+        <h1>Films Overview</h1>
+      </Header>
       <div className="data-list">
         <AppButton
           customClick={handleShowFilters}
@@ -50,7 +54,6 @@ const DataList = ({ films }) => {
               <p>{film.original_title}</p>
               <Link to={`/film/${film.id}`}>
                 <img src={film.backdrop_path} alt={film.original_title} />
-                {/* <p>{film.original_title}</p> */}
               </Link>
             </section>
           ))

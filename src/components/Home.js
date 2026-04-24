@@ -1,10 +1,10 @@
 import DesktopNavigation from "./DesktopNavigation";
 import useFetch from "../customHooks/useFetch";
 import DataList from "./DataList";
-import Overview from "./Overview";
 
 const Home = () => {
   const { data: films, isPending } = useFetch("http://localhost:8000/films/");
+
   return (
     <div>
       <DesktopNavigation />
@@ -18,7 +18,6 @@ const Home = () => {
         </div>
       )}
       {films && <DataList films={films} />}
-      {films && <Overview films={films} />}
     </div>
   );
 };

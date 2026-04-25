@@ -147,11 +147,6 @@ option {
   margin-bottom: 10px;
 }
 
-select,
-option {
-  width: 20px;
-}
-
 /* Styling for cardview */
 
 .product-list-content {

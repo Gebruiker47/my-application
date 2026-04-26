@@ -8,12 +8,17 @@ const DataList = ({ films }) => {
   const [showFilterOptions, setShowFilterOptions] = useState(false);
 
   // Begin van zoekfunctie dmv inputveld:
+  const [selected, setSelected] = useState("");
   const handleFilter = (e) => {
     const value = e.target.value;
     const filtered = films.filter((film) => {
-      return film.original_title
-        .toLowerCase()
-        .includes(value.toLowerCase().trim());
+      if (selected === "original_title") {
+        return film.original_title
+          .toLowerCase()
+          .includes(value.toLowerCase().trim());
+      } else if (selected === "movie_id") {
+        return film.movie_id.toString().includes(value.toString().trim());
+      }
     });
     return setFilteredData(filtered);
   };
@@ -50,6 +55,10 @@ const DataList = ({ films }) => {
     return setFilteredData(films);
   };
   // Einde van sorteerfunctie.
+
+  // Begin van zoekfunctie obv verschillende properties (Zie github Issue #9)
+
+  // Einde van zoekfunctie obv verschillende properties (Zie github Issue #9)
   return (
     <div>
       <Header>
@@ -77,6 +86,14 @@ const DataList = ({ films }) => {
             <option value="vote_count">Vote Count</option>
           </select>
 
+          <select
+            name="SearchByProperty"
+            onChange={(e) => setSelected(e.target.value)}
+          >
+            <option value="">Search By</option>
+            <option value="original_title">Title</option>
+            <option value="movie_id">Movie ID</option>
+          </select>
           <div className="searchbar-holder">
             <input
               className="searchbar"
@@ -98,6 +115,7 @@ const DataList = ({ films }) => {
               <Link to={`/film/${film.id}`}>
                 <img src={film.backdrop_path} alt={film.original_title} />
               </Link>
+              <p>Movie ID : {film.movie_id}</p>
             </section>
           ))
         )}

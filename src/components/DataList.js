@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Alert from "../custom-components/Alert";
 import AppButton from "../custom-components/AppButton";
@@ -6,31 +6,46 @@ import Header from "../custom-components/Header";
 const DataList = ({ films }) => {
   const [filteredData, setFilteredData] = useState(films);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
-
-  // Begin van zoekfunctie dmv inputveld:
   const [selected, setSelected] = useState("");
+  const [disable, setDisable] = useState(false);
+
+  useEffect(() => {
+    setDisable(disable);
+  }, [disable]);
+
+  // Begin van zoekfunctie obv verschillende properties (Zie github Issue #9)
+  const [warning, setWarning] = useState("");
+
   const handleFilter = (e) => {
     const value = e.target.value;
     const filtered = films.filter((film) => {
+      const title = film.original_title
+        .toLowerCase()
+        .includes(value.toLowerCase().trim());
+
+      const movieID = film.movie_id
+        .toString()
+        .includes(value.toString().trim());
+
+      // if (selected) {
       if (selected === "original_title") {
-        return film.original_title
-          .toLowerCase()
-          .includes(value.toLowerCase().trim());
+        setWarning("");
+        return title;
       } else if (selected === "movie_id") {
-        return film.movie_id.toString().includes(value.toString().trim());
+        setWarning("");
+        return movieID;
+      } else if (selected === "" && filteredData !== 0) {
+        return setWarning(<Alert className="warning">Kies een optie</Alert>);
+      } else {
+        return setFilteredData(filtered);
       }
+      // }
     });
     return setFilteredData(filtered);
   };
-
-  // Einde van zoekfunctie dmv inputveld.
-
-  const handleShowFilters = () => {
-    return setShowFilterOptions(!showFilterOptions);
-  };
+  // Einde van zoekfunctie obv verschillende properties (Zie github Issue #9)
 
   // Begin van sorteerfunctie:
-
   const sortBySelect = (type) => {
     const types = {
       title: "original_title",
@@ -56,9 +71,10 @@ const DataList = ({ films }) => {
   };
   // Einde van sorteerfunctie.
 
-  // Begin van zoekfunctie obv verschillende properties (Zie github Issue #9)
+  const handleShowFilters = () => {
+    return setShowFilterOptions(!showFilterOptions);
+  };
 
-  // Einde van zoekfunctie obv verschillende properties (Zie github Issue #9)
   return (
     <div>
       <Header>
@@ -77,16 +93,7 @@ const DataList = ({ films }) => {
       ) : (
         <div className="filter-holder">
           <select
-            name="selectedSortProperty"
-            onChange={(e) => sortBySelect(e.target.value)}
-          >
-            <option value="">Sort By</option>
-            <option value="title">Title</option>
-            <option value="movieId">Movie ID</option>
-            <option value="vote_count">Vote Count</option>
-          </select>
-
-          <select
+            className={`${selected ? "" : "test"}`}
             name="SearchByProperty"
             onChange={(e) => setSelected(e.target.value)}
           >
@@ -99,14 +106,25 @@ const DataList = ({ films }) => {
               className="searchbar"
               type="text"
               onChange={handleFilter}
-              placeholder="Searchbar in FilmsList component"
+              placeholder={selected ? "Zoek naar een item" : "Kies een optie!"}
+              disabled={selected ? disable : !disable}
             />
           </div>
+          <select
+            name="SortByProperty"
+            onChange={(e) => sortBySelect(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="title">Title</option>
+            <option value="movieId">Movie ID</option>
+            <option value="vote_count">Vote Count</option>
+          </select>
+          {warning}
         </div>
       )}
 
       <main className="product-list-content">
-        {filteredData.length === 0 ? (
+        {filteredData.length === 0 && selected !== "" ? (
           <Alert className="danger">Nothing Found</Alert>
         ) : (
           filteredData.map((film) => (

@@ -102,6 +102,13 @@ img {
 
 /* Styling for inputs */
 
+input[type="text"] {
+  width: 98%;
+}
+select {
+  width: 15%;
+}
+
 input[type="text"],
 input[type="search"],
 select,
@@ -122,21 +129,19 @@ option {
   width: 98%;
   /* 
     Padding top en de bottom gelijke hoogte geven,
-    zodat de letter mooi in het midden gecentreerd blijven 
+    zodat de letters mooi in het midden gecentreerd blijven 
   */
   padding-bottom: 10px;
   padding-top: 10px;
 }
 
 .searchbar-holder {
-  padding: 10px;
+  padding: 10px 10px 0px 0px;
   background-color: #f1356d;
   border-radius: 5px;
   height: 62px;
   position: sticky;
   top: 0;
-  width: 100%;
-
   /* 
     Border-box gebruiken om te 
     voorkomen dat de searchbox 
@@ -145,6 +150,15 @@ option {
   box-sizing: border-box;
   align-content: center;
   margin-bottom: 10px;
+}
+
+/* Styling for filters */
+
+.filter-holder {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
 /* Styling for cardview */
@@ -221,6 +235,12 @@ nav a.active {
     bottom: 0;
     font-size: 18pt;
   }
+  input[type="text"],
+  input[type="search"],
+  select,
+  option {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 480px) {
@@ -239,6 +259,19 @@ nav a.active {
   main {
     margin-bottom: 80px;
   }
+  select,
+  option {
+    width: 43%;
+  }
+  .searchbar-holder {
+    width: 61%;
+  }
+  select {
+    width: 34%;
+  }
+  select:nth-child(3) {
+    width: 100%;
+  }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -248,13 +281,46 @@ nav a.active {
   .product-detail-content {
     width: auto;
   }
+  .searchbar-holder {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
   .product-preview-content {
     width: 29%;
   }
+  .searchbar-holder {
+    width: 60%;
+  }
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .searchbar-holder {
+    width: 66%;
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1780px) {
+  .searchbar-holder {
+    width: 66%;
+  }
+}
+
+.test {
+  border-color: red;
+  border-width: thick;
+}
+
+input[type="text"]:disabled {
+  background: rgb(84, 84, 84);
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* De kleur van de disabled placeholder kun je op de volgende manier veranderen. */
+
+:disabled::-webkit-input-placeholder {
+  color: rgb(247, 184, 184);
 }

@@ -6,14 +6,16 @@ import Header from "../custom-components/Header";
 const DataList = ({ films }) => {
   const [filteredData, setFilteredData] = useState(films);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
+  // selected en setSelected om via input gericht te zoeken:
   const [selected, setSelected] = useState("");
+  const [selectedAscDesc, setSelectedAscDesc] = useState("");
   const [disable, setDisable] = useState(false);
 
   useEffect(() => {
     setDisable(disable);
   }, [disable]);
 
-  // Begin van zoekfunctie obv verschillende properties (Zie github Issue #9)
+  // Begin van zoekfunctie obv gekozen properties (Zie github Issue #9)
   const [warning, setWarning] = useState("");
 
   const handleFilter = (e) => {
@@ -34,16 +36,17 @@ const DataList = ({ films }) => {
       } else if (selected === "movie_id") {
         setWarning("");
         return movieID;
-      } else if (selected === "" && filteredData !== 0) {
-        return setWarning(<Alert className="warning">Kies een optie</Alert>);
+        // } else if (selected === "" && filteredData !== 0) {
+        //   return setWarning(<Alert className="warning">Kies een optie</Alert>);
       } else {
         return setFilteredData(filtered);
       }
       // }
     });
     return setFilteredData(filtered);
+    // return setFilteredData(films);
   };
-  // Einde van zoekfunctie obv verschillende properties (Zie github Issue #9)
+  // Einde van zoekfunctie obv gekozen properties (Zie github Issue #9)
 
   // Begin van sorteerfunctie:
   const sortBySelect = (type) => {
@@ -52,6 +55,7 @@ const DataList = ({ films }) => {
       movieId: "movie_id",
       vote_count: "vote_count",
     };
+    setSelectedAscDesc(type.target.value);
     const sortProperty = types[type];
 
     if (typeof sortProperty === "string") {
@@ -70,6 +74,30 @@ const DataList = ({ films }) => {
     return setFilteredData(films);
   };
   // Einde van sorteerfunctie.
+
+  // Begin van aflopend en oplopend sorteren
+  const handleSortAscDesc = (e) => {
+    const value = e.target.value;
+
+    // Maak een nieuw array aan.
+    const sortedData = [...filteredData];
+
+    sortedData.sort((a, b) => {
+      if (value === "0" && selectedAscDesc === "original_title") {
+        return a.title > b.title ? 1 : -1;
+      } else if (value === "1" && selectedAscDesc === "original_title") {
+        return a.title > b.title ? -1 : 1;
+      } else if (value === "0" && selectedAscDesc === "movie_id") {
+        return value === "0" ? a.id - b.id : a.id - b.id;
+      } else if (value === "0" && selectedAscDesc === "movie_id") {
+        return value === "1" ? b.id - a.id : b.id - a.id;
+      }
+      return setFilteredData(sortedData);
+    });
+    return setFilteredData(sortedData);
+    // return setFilteredData(films);
+  };
+  // Einde van aflopend en oplopend sorteren
 
   const handleShowFilters = () => {
     return setShowFilterOptions(!showFilterOptions);
@@ -112,14 +140,21 @@ const DataList = ({ films }) => {
           </div>
           <select
             name="SortByProperty"
-            onChange={(e) => sortBySelect(e.target.value)}
+            // onChange={(e) => sortBySelect(e.target.value)}
+            onChange={sortBySelect}
           >
             <option value="">Sort By</option>
-            <option value="title">Title</option>
-            <option value="movieId">Movie ID</option>
+            <option value="original_title">Title</option>
+            <option value="movie_id">Movie ID</option>
             <option value="vote_count">Vote Count</option>
           </select>
           {warning}
+
+          <select onChange={handleSortAscDesc}>
+            <option value="">Select an option</option>
+            <option value={0}>Ascending</option>
+            <option value={1}>Descending</option>
+          </select>
         </div>
       )}
 

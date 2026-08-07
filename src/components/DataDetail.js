@@ -12,13 +12,13 @@ const DataDetail = () => {
         <div>
           <DesktopNavigation />
           <Header>
-            <h1>{films.original_title}</h1>
+            <h1>Overview details</h1>
           </Header>
           <div className="product-detail-content">
             <Link to={"/"}>
               <AppButton>Terug</AppButton>
             </Link>
-            <h1>Overview</h1>
+            <h1>{films.original_title}</h1>
             <p>{films.overview}</p>
             <img
               src={films.backdrop_path}

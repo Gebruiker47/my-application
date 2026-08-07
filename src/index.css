@@ -324,3 +324,24 @@ input[type="text"]:disabled {
 :disabled::-webkit-input-placeholder {
   color: rgb(247, 184, 184);
 }
+
+.main-dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: anchor-center;
+}
+
+.sub-dashboard-content {
+  width: auto;
+  align-items: center;
+  box-shadow:
+    rgba(0, 0, 0, 0.12) 0px 1px 3px,
+    rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.sub-dashboard-content canvas {
+  height: 300px;
+}

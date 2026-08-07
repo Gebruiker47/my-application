@@ -5,6 +5,7 @@ const DesktopNavigation = ({ children }) => {
     <nav id="desktop-menu">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/overview">Overview</NavLink>
+      <NavLink to="/dashboard">Dashboard</NavLink>
       {children}
     </nav>
   );
